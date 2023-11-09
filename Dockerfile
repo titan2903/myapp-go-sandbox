@@ -1,11 +1,16 @@
 # Stage 1: Build stage using the official Golang Alpine image
-FROM golang:alpine3.16 AS build
+FROM golang:1.18-alpine as build
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Install required dependencies for building the Go application
 RUN apk add --no-cache bash make gcc libc-dev
+
+# Cache and install dependencies
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
 
 # Copy the current directory contents into the container at /app
 COPY . .
@@ -17,7 +22,7 @@ RUN go build -o myapp-go
 FROM alpine:latest
 
 # Install necessary packages for building and compatibility
-RUN apk add --no-cache bash
+RUN apk add bash build-base gcompat
 
 # Copy the 'myapp-go' binary from the build stage to the current directory
 COPY --from=build /app/myapp-go .
@@ -26,4 +31,4 @@ COPY --from=build /app/myapp-go .
 EXPOSE 8000
 
 # Specify the command to run on container startup
-CMD [ "/myapp-go" ]
+CMD [ "./myapp-go" ]
