@@ -30,7 +30,7 @@ FROM alpine:latest
 # RUN apk add --no-cache bash
 
 # Copy the compiled application from the build stage to the final image
-COPY --from=build /app/myapp .
+COPY --from=build /app/myapp-go .
 
 # Expose port if your application listens on a specific port
 EXPOSE 8000
