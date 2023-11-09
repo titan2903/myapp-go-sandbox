@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: aditirvan/myapp-golang:${{ github.run_number }}
+          tags: titan29/myapp-go:${{ github.run_number }}
 
       - name: Check docker images
         run: docker image ls
@@ -44,7 +44,7 @@ jobs:
   #         port: 22
   #         script: |
   #           docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password=${{ secrets.DOCKERHUB_TOKEN }}
-  #           docker pull aditirvan/myapp-golang:${{ github.run_number }}
+  #           docker pull titan29/myapp-go:${{ github.run_number }}
   #           docker rm -f myapp
-  #           docker run --name myapp -d -p 80:8060 aditirvan/myapp-golang:${{ github.run_number }}
+  #           docker run --name myapp -d -p 80:8060 titan29/myapp-go:${{ github.run_number }}
 
