@@ -13,6 +13,9 @@ RUN go build -o myapp-go
 # Stage 2: Create a lightweight container with the final executable
 FROM alpine:latest
 
+# Install necessary packages for building and compatibility
+RUN apk add bash build-base gcompat
+
 # Copy the 'myapp-go' binary from the build stage to the current directory
 COPY --from=build /app/myapp-go .
 
@@ -20,4 +23,4 @@ COPY --from=build /app/myapp-go .
 EXPOSE 8000
 
 # Specify the command to run on container startup
-CMD [ "/myapp-go" ]
+CMD [ "./myapp-go" ]
