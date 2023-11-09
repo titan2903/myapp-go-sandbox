@@ -27,7 +27,7 @@ RUN go build -o myapp-go
 FROM alpine:latest
 
 # Install necessary packages for the final image
-# RUN apk add --no-cache bash
+RUN apk add --no-cache bash
 
 # Copy the compiled application from the build stage to the final image
 COPY --from=build /app/myapp-go .
