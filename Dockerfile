@@ -24,10 +24,10 @@ RUN go build -o myapp-go
 # STEP 2: create a smaller image for the final application
 
 # Use a minimal Alpine Linux image as the final stage
-FROM alpine:3.16.0
+FROM alpine:latest
 
 # Install necessary packages for the final image
-RUN apk add --no-cache bash
+# RUN apk add --no-cache bash
 
 # Copy the compiled application from the build stage to the final image
 COPY --from=build /app/myapp .
