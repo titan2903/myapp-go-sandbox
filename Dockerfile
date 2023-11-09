@@ -14,7 +14,7 @@ RUN go build -o myapp-go
 FROM alpine:latest
 
 # Install necessary packages for building and compatibility
-RUN apk add bash build-base gcompat
+RUN apk add --no-cache bash
 
 # Copy the 'myapp-go' binary from the build stage to the current directory
 COPY --from=build /app/myapp-go .
