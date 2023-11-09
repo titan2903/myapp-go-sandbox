@@ -23,4 +23,4 @@ COPY --from=build /app/myapp-go .
 EXPOSE 8000
 
 # Specify the command to run on container startup
-CMD [ "./myapp-go" ]
+CMD [ "/myapp-go" ]
