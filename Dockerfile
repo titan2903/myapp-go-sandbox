@@ -4,6 +4,9 @@ FROM golang:alpine3.16 AS build
 # Set the working directory inside the container
 WORKDIR /app
 
+# Install required dependencies for building the Go application
+RUN apk add --no-cache bash make gcc libc-dev
+
 # Copy the current directory contents into the container at /app
 COPY . .
 
