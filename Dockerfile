@@ -29,6 +29,9 @@ FROM alpine:3.16.0
 # Install necessary packages for the final image
 RUN apk add --no-cache bash
 
+# Copy the compiled application from the build stage to the final image
+COPY --from=build /app/myapp .
+
 # Expose port if your application listens on a specific port
 EXPOSE 8000
 
