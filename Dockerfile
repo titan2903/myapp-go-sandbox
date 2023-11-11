@@ -33,7 +33,7 @@ FROM alpine:latest
 COPY --from=build /app/myapp-go .
 
 # Expose port if your application listens on a specific port
-EXPOSE 8000
+EXPOSE 8060
 
 # Define the command to run your application
 CMD ["./myapp-go"]
