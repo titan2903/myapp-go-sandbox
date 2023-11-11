@@ -30,7 +30,7 @@ func main() {
 			"code":     200,
 			"language": "go version go1.20.6",
 			"message":  "Server running on port 8000",
-			"version":  "v1.0",
+			"version":  "v2.0",
 		})
 	})
 	r.GET("/env", func(c *gin.Context) {
